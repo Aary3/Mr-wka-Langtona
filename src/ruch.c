@@ -46,7 +46,6 @@ poz_t zmiana(poz_t poz) {
 		poz->kolor = 0;
 		poz->kierunek = obort_lewo(poz);
 	}
-	poz = ruch(poz);
 	return poz;
 }
 
@@ -60,4 +59,17 @@ poz_t ruch(poz_t poz) {
 	if(strcmp(poz->kierunek,"left")==0)
 		poz->s-=1;
 	return poz;
+}
+
+int **przejscia(poz_t poz, int **tab, int a, int b, int it, char *kier) {	//a, b - pozycje początkowe
+	poz->x = a;								//it - liczba iteracji
+	poz->y = b;								//kier - kierunek początkowy
+	poz->kolor = tab[a][b];
+	strcpy(poz->kierunek,poz->kier);
+	for (int i = 0; i < it; i++) {
+		poz = zmiana(poz);
+		tab[x][y] = poz->kolor;
+		poz = ruch(poz);
+	}
+	return tab;
 }

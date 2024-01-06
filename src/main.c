@@ -9,6 +9,7 @@ int main(int argc, char **argv) {
 
 	int **siatka;
 	siatka = siatka_init(siatka, m, n);
+	siatka = przejscia(siatka);
 
 	return 0;
 }
