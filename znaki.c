@@ -17,7 +17,7 @@
 // ARROW_SOUTH_BLACK:▼
 // ARROW_WEST_WHITE:◁
 // ARROW_WEST_BLACK:◀
-int main() {
+int main(int argc, char **argv) {
     
     printf("▶ \n");
     
