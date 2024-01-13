@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include "plansza.h"
 
 int mrowka_operacja(mrowisko mrowka, plansza **array){
 	switch(array[mrowka.x][mrowka.y].state) {
