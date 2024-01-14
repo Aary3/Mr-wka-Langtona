@@ -18,6 +18,7 @@ void getarg(int argc, char **argv, arg argload)
 				break;
 			case 'f':
 				argload.czyf=1;
+				argload.filename=malloc(strlen(optarg)*sizeof(char));
 				argload.filename=optarg;
 				break;
 			case 'd':
@@ -25,6 +26,7 @@ void getarg(int argc, char **argv, arg argload)
 				break;
 			case 'l':
 				argload.load=1;
+				argload.loadf=malloc(strlen(optarg)*sizeof(char));
 				argload.loadf=optarg;
 				break;
 			case 'r':
