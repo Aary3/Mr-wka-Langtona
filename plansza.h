@@ -1,6 +1,8 @@
-#include <stdlib.h>
-#include <stdio.h>
+#ifndef PLANSZA_H
+#define PLANSZA_H
 #include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 typedef struct komorka{ //idea: zadeklarowac pointer[x][y] o wymiarach planszy
 	bool state; 	// i trzymac stan.
@@ -14,4 +16,4 @@ typedef struct mrow{
 
 int mrowka_operacja(mrowisko mrowka, plansza **array);
 
-
+#endif
