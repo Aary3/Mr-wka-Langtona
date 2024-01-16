@@ -17,7 +17,7 @@ void wypisz(FILE *file, plansza **array, int m, int n) {
 			else if (i == 2*m+2 && j == 2*n+2)
 				fprintf(file, "┘");
 			else if ( i % 2 == 1)			//jak jesteśmy w nieparzystym wierszu
-				fprintf(file, "─");			//jak jesteśmy w parzystym wierszu
+					fprintf(file, "─");			//jak jesteśmy w parzystym wierszu
 			else if (j % 2 == 1)			//jak jesteśmy w nieparzystej kolumnie
 				fprintf(file, "│");
 			else if (array[x][y].state == 1)

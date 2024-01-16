@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <wchar.h>
 #include <locale.h>
+#include <string.h>
 // LINE_VERTICAL:│
 // LINE_HORIZONTAL:─
 // LINE_DOWN_RIGHT:┌
@@ -22,11 +23,11 @@ int main(int argc, char **argv) {
     printf("▶ \n");
     
     char *c = "▶";
-    printf("%s %d \n", c, strlen(c));
+    printf("%s %ld \n", c, strlen(c));
     
     // setlocale(LC_ALL, "");
     setlocale(LC_ALL, "C.UTF-8");
     wchar_t *wc = L"▶";
-    printf("%ls %d \n", wc, wcslen(wc));
+    printf("%ls %ld \n", wc, wcslen(wc));
     return 0;
 }

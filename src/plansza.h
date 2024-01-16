@@ -14,6 +14,6 @@ typedef struct mrow{
 	int y;
 } mrowisko;
 
-int mrowka_operacja(mrowisko mrowka, plansza **array);
+int mrowka_operacja(mrowisko *mrowka, plansza **array);
 
 #endif

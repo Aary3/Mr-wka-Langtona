@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <unistd.h>
+#include <string.h>
 
 typedef struct argumennty {
 	int m;
@@ -11,13 +12,13 @@ typedef struct argumennty {
 	int i;
 	bool czyf;
 	char *filename;
-	char dir;
+	int dir;
 	bool load;
 	bool rand;
 	char *loadf;
 	int randval;
 } arg;
 
-void getarg(int argc, char **argv);
+void getarg(int argc, char **argv, arg *argload);
 
 #endif
