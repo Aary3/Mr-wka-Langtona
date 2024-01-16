@@ -1,7 +1,8 @@
 #include "plansza.h"
 
 int mrowka_operacja(mrowisko mrowka, plansza **array){
-	switch(array[mrowka.x][mrowka.y].state) {
+	switch(array[mrowka.x][mrowka.y].state) 
+	{
 		case 0:
 			mrowka.kierunek+=1;
 			mrowka.kierunek%=4;//aby nie wyszlo za zakres kierunkow;
@@ -13,7 +14,8 @@ int mrowka_operacja(mrowisko mrowka, plansza **array){
 			array[mrowka.x][mrowka.y].state=0;
 			break;
 	}
-	switch(mrowka.kierunek) {
+	switch(mrowka.kierunek)
+       	{
 		case 0:
 			mrowka.x-=1;
 			break;
@@ -26,8 +28,5 @@ int mrowka_operacja(mrowisko mrowka, plansza **array){
 		case 3:
 			mrowka.y-=1;
 			break;
-
 	}
-
 }
-
