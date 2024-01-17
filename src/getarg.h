@@ -17,7 +17,7 @@ typedef struct argumennty {
 	bool load;
 	bool rand;
 	char *loadf;
-	int randval;
+	double randval;
 } arg;
 
 void getarg(int argc, char **argv, arg *argload);

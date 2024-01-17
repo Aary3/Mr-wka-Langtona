@@ -42,7 +42,8 @@ void getarg(int argc, char **argv, arg *argload)
 				break;
 			case 'r':
 				argload->rand=1;
-				argload->randval=atoi(optarg);
+				argload->randval=atof(optarg);
+				break;
 			case '?':
 				printf("nieznany argument: %c\n", optopt);
 				break;
