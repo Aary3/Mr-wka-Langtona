@@ -34,7 +34,9 @@ int main(int argc, char **argv)
 		mrowka->y = arglist->m / 2; //pozycja startowa na srodku ~
 	} else //tu napisac wczytanie
 	{
-		;
+		plansza **board;
+		mrowisko *mrowka=malloc(sizeof(mrowisko));
+		wczytywanie(board, mrowka, arglist);
 	}
 
 	board = przejscie_mrowki(arglist->i, mrowka, board);

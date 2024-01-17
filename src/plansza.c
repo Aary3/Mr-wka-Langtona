@@ -1,6 +1,6 @@
 #include "plansza.h"
 
-int mrowka_operacja(mrowisko *mrowka, plansza **array){
+int mrowka_operacja(mrowisko *mrowka, plansza **array, arg *arglist){
 	switch(array[mrowka->x][mrowka->y].state) 
 	{
 		case 0:
@@ -18,15 +18,23 @@ int mrowka_operacja(mrowisko *mrowka, plansza **array){
        	{
 		case 0:
 			mrowka->x-=1;
+			if(mrowka->x<0)
+				mrowka->x=arglist->m-1;
 			break;
 		case 1:
 			mrowka->y+=1;
+			if(mrowka->y==arglist->n)
+				mrowka->y=0;
 			break;
 		case 2:
 			mrowka->x+=1;
+			if(mrowka->x==arglist->m)
+				mrowka->x=0;
 			break;
 		case 3:
 			mrowka->y-=1;
+			if(mrowka->y<0)
+				mrowka->y=arglist->n-1;
 			break;
 	}
 }

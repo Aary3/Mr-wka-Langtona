@@ -4,7 +4,7 @@
 
 plansza **przejscie_mrowki(int it, mrowisko *mrowka, plansza **array, arg *arglist ) {
 	for (int i = 0; i < it; i++){
-		mrowka_operacja(mrowka, array);
+		mrowka_operacja(mrowka, array, arglist);
 		wypisz(array, mrowka, arglist, i);}
 	return array;
 }
