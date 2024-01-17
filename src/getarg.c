@@ -22,7 +22,8 @@ void getarg(int argc, char **argv, arg *argload)
 				argload->filename=optarg;
 				break;
 			case 'd':
-				argload->dir=atoi(optarg);
+				argload->dir=malloc(strlen(optarg)*sizeof(char));
+				argload->dir=optarg;
 				break;
 			case 'l':
 				argload->load=1;

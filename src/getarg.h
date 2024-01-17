@@ -12,7 +12,7 @@ typedef struct argumennty {
 	int i;
 	bool czyf;
 	char *filename;
-	int dir;
+	char *dir;
 	bool load;
 	bool rand;
 	char *loadf;
