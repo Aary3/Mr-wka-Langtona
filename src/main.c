@@ -13,23 +13,27 @@ int main(int argc, char **argv) {
 	for (int i = 0; i < arglist->m; i++)
 			board[i] = malloc(arglist->n * sizeof(plansza));
 	char *file_out = malloc(50*sizeof *file_out);
-	if(arglist->filename == NULL)
+	if(arglist->czyf == 0)
 		sprintf(file_out, "plansza_%diteracji.txt", arglist->i);
 	else
 		sprintf(file_out, "%s_%diteracji.txt", arglist->filename, arglist->i);
 	FILE *f = fopen(file_out, "w");
 	
 	mrowisko *mrowka = malloc(sizeof *mrowka);
-	if (strcmp(arglist->dir, "up") == 0)			//zmiana kierunku z char na int
+	if(arglist->czydir == 0) 
 		mrowka->kierunek = 1;
-	else if (strcmp(arglist->dir, "right") == 0)
-		mrowka->kierunek = 2;
-	else if(strcmp(arglist->dir, "down") == 0)
-		mrowka->kierunek = 3;
-	else if(strcmp(arglist->dir, "left") == 0)
-		mrowka->kierunek = 0;
-	else
-		mrowka->kierunek = 1;		//domyślnie kierunek w górę
+	else {
+		if (strcmp(arglist->dir, "up") == 0)			//zmiana kierunku z char na int
+			mrowka->kierunek = 1;
+		else if (strcmp(arglist->dir, "right") == 0)
+			mrowka->kierunek = 2;
+		else if(strcmp(arglist->dir, "down") == 0)
+			mrowka->kierunek = 3;
+		else if(strcmp(arglist->dir, "left") == 0)
+			mrowka->kierunek = 0;
+		else
+			mrowka->kierunek = 1;		//domyślnie kierunek w górę
+	}
 	mrowka->x = arglist->n / 2;
 	mrowka->y = arglist->m / 2;
 	board = przejscie_mrowki(arglist->i, mrowka, board);

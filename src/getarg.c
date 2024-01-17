@@ -3,6 +3,15 @@
 void getarg(int argc, char **argv, arg *argload)
 {
 	int opt;
+	//domyślne wartości; jak getopt przeczyta jakąś to ją nadpisze
+	argload->m = 10;
+	argload->n = 10;
+	argload->i = 10;
+	argload->czyf=0;
+	argload->czydir=0;
+	argload->load = 0;
+	argload->rand = 0;
+
 	while((opt=getopt(argc, argv, ":m:n:i:f:d:l:r:"))!= -1)
 	{
 		switch(opt)
@@ -22,6 +31,7 @@ void getarg(int argc, char **argv, arg *argload)
 				argload->filename=optarg;
 				break;
 			case 'd':
+				argload->czydir=1;
 				argload->dir=malloc(strlen(optarg)*sizeof(char));
 				argload->dir=optarg;
 				break;
