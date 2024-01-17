@@ -1,7 +1,14 @@
-
+// ARROW_NORTH_WHITE:△
+// ARROW_NORTH_BLACK:▲
+// ARROW_EAST_WHITE:▷
+// ARROW_EAST_BLACK:▶
+// ARROW_SOUTH_WHITE:▽
+// ARROW_SOUTH_BLACK:▼
+// ARROW_WEST_WHITE:◁
+// ARROW_WEST_BLACK:◀
 #include "rys.h"
 
-void wypisz(FILE *file, plansza **array, int m, int n) {
+void wypisz(FILE *file, plansza **array, mrowisko *mrowka, int m, int n) {
 	int x = 0;
 	int y = 0;
 	for (int i = 1; i <= 2*m+1; i++) {		//wiersze
@@ -21,10 +28,43 @@ void wypisz(FILE *file, plansza **array, int m, int n) {
 			else if (j % 2 == 1)			//jak jesteśmy w nieparzystej kolumnie
 				fprintf(file, "│");
 			else if (array[x][y].state == 1)
-				fprintf(file, "█");
+			{
+				if(mrowka->x==x && mrowka->y==y)
+					switch(mrowka->kierunek){
+						case 0:
+							fprintf(file, "◀");
+							break;
+						case 1:
+							fprintf(file, "▲");
+							break;
+						case 2:
+							fprintf(file, "▶");
+							break;
+						case 3:
+							fprintf(file, "▼");
+					}
+				else	
+					fprintf(file, "█");
+			}
 			else
-				fprintf(file, " ");
-
+			{
+			if(mrowka->x==x && mrowka->y==y)
+                                        switch(mrowka->kierunek){
+                                                case 0:
+                                                        fprintf(file, "◁");
+                                                        break;
+                                                case 1:
+                                                        fprintf(file, "△");
+                                                        break;
+                                                case 2:
+                                                        fprintf(file, "▷");
+                                                        break;  
+                                                case 3:
+                                                        fprintf(file, "▽");
+                                        }
+                                else    
+                                        fprintf(file, " ");
+			}
 		}
 	fprintf(file, "\n");	
 }

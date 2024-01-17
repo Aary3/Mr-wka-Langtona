@@ -3,6 +3,6 @@
 #include "plansza.h"
 #include <stdio.h>
 
-void wypisz (FILE *file, plansza **array, int m, int n);
+void wypisz (FILE *file, plansza **array, mrowisko *mrowka, int m, int n);
 
 #endif
