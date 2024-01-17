@@ -1,7 +1,24 @@
 
 #include "rys.h"
 
-void wypisz(FILE *file, plansza **array, mrowisko *mrowka, int m, int n) {
+void wypisz(plansza **array, mrowisko *mrowka, arg *arglist, int iteracja) {
+        int m=arglist->m;
+	int n=arglist->n;
+	int ilecyfr=0;
+	int kopia=iteracja;
+	while(kopia>0)
+	{
+		ilecyfr++;
+		kopia/=10;
+	}
+	if(arglist->czyf == 0)
+		FILE *file=stdout;
+        else
+	{
+		char *file_out=malloc((ilecyfr+strlen(arglist->filename)+14)*sizeof(char));
+                sprintf(file_out, "%s_%diteracji.txt", arglist->filename, arglist->i);
+		FILE *file=fopen(file_out, "w");
+	}
 	int x = 0;
 	int y = 0;
 	for (int i = 1; i <= 2*m+1; i++) {		//wiersze
