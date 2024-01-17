@@ -1,11 +1,4 @@
-// ARROW_NORTH_WHITE:△
-// ARROW_NORTH_BLACK:▲
-// ARROW_EAST_WHITE:▷
-// ARROW_EAST_BLACK:▶
-// ARROW_SOUTH_WHITE:▽
-// ARROW_SOUTH_BLACK:▼
-// ARROW_WEST_WHITE:◁
-// ARROW_WEST_BLACK:◀
+
 #include "rys.h"
 
 void wypisz(FILE *file, plansza **array, mrowisko *mrowka, int m, int n) {
