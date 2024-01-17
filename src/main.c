@@ -28,10 +28,10 @@ int main(int argc, char **argv) {
 	wypisz(f, board, arglist->m, arglist->n);
 
 	//zwalnianie pamięci
-	free(arglist);
 	for (int i = 0; i < arglist->m; i++)
 		free(board[i]);
 	free(board);
+	free(arglist);
 	free(file_out);
 	free(mrowka);
 	return 0;
