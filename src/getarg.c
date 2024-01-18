@@ -11,6 +11,7 @@ void getarg(int argc, char **argv, arg *argload)
 	argload->czydir=0;
 	argload->load = 0;
 	argload->rand = 0;
+	argload->filename_len = 0;
 
 	while((opt=getopt(argc, argv, ":m:n:i:f:d:l:r:"))!= -1)
 	{
@@ -29,6 +30,7 @@ void getarg(int argc, char **argv, arg *argload)
 				argload->czyf=1;
 				argload->filename=malloc(strlen(optarg)*sizeof(char));
 				argload->filename=optarg;
+				argload->filename_len=strlen(argload->filename);
 				break;
 			case 'd':
 				argload->czydir=1;

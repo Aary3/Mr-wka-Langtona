@@ -12,7 +12,7 @@ void wypisz(plansza **array, mrowisko *mrowka, arg *arglist, int iteracja) {
 		ilecyfr++;
 		kopia/=10;
 	}
-	char *file_out=malloc((ilecyfr+strlen(arglist->filename)+14)*sizeof(char));
+	char *file_out =arglist->czyf==0?malloc((ilecyfr+arglist->filename_len+14)*sizeof(char)):NULL;
 	if(arglist->czyf == 0)
 		file=stdout;
         else
