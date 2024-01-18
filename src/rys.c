@@ -19,14 +19,15 @@ void wypisz(plansza **array, mrowisko *mrowka, arg *arglist, int iteracja) {
 	{
 		file_out=malloc((ilecyfr+arglist->filename_len+14)*sizeof(char));
                 sprintf(file_out, "%s_%diteracji.txt", arglist->filename, arglist->i);
-		if (iteracja == 0)
+		if (iteracja == -1)
 			file=fopen(file_out, "w");
 		else
-			file=fopen(file_out, "a");
+			file=fopen(file_out, "a+");
 	}
 	int x = 0;
 	int y = 0;
-	fprintf(file, "Iteracja nr. %d:\n", iteracja+1);
+	if (file == stdout)
+		fprintf(file, "Iteracja nr. %d:\n", iteracja+1);
 	for (int i = 1; i <= 2*m+1; i++) {		//wiersze
 		y = (i-1)/2;
 		for (int j = 1; j <= 2*n+1; j++) {		//kolumny
