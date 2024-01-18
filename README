@@ -1,0 +1,29 @@
+****** MROWKA LANGTONA ******
+
+Ten program generuje symboliczne przedstawienie nastepnych iteracji
+mrowki langtona poruszajacej sie po zadanej planszy.
+
+****** INSTALACJA/URUCHOMIENIE ******
+
+1. W wypadku braku zainstalowanego pakietu obslugujacego komende
+make nalezy najpierw jakis zainstalowac
+2. Komenda "make all" wygeneruje nam plik mrowka w folderze bin ktory mozemy uruchomic
+w sposob odpowiedni do uzywanego systemu, na przyklad ./mrowka [argumenty].
+3. Ponadto komendy "make test_big" oraz "make test_small" uruchamiaja dwa przygotowane
+juz ciagi argumentow   
+
+****** FUNKCJE ******
+
+1. Program moze przyjac argumenty w "dowolnej" kolejnosci (to jest tak dlugo jak mamy
+obok siebie flage i wartosc w tej kolejnosci, to kolejnosc takich "grup" argumentow
+moze byc dowolna). Jesli jakis argument nie zostanie podany program sam przyjmuje wartosc
+2. W formacie (flaga) [co oznacza] program przyjmuje nastepujace argumenty:
+	2.1 (-m) [liczbe wierszy planszy] (przy wczytywaniu i tak sami liczymy 
+	wiec nie trzeba podawac)
+	2.2 (-n) [liczbe kolumn planszy] (tak samo liczymy sami przy wczytywaniu)
+	2.3 (-i) [liczbe iteracji ktore ma przejsc mrowka] 
+	2.4 (-f) [przedrostek plikow wynikowych name]
+	2.5 (-d) [poczatkowy kierunek mrowki] (startowa lokacja jest przyjmowana za srodek)
+	2.6 (-l) [wczytanie mapy o podanej nazwie] 
+	2.7 (-r) [generowanie mapy, gdzie wartosc oznacza procent zapelnienia czarnymi polami]
+
