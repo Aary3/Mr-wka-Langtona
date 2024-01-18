@@ -11,7 +11,7 @@ typedef struct argumennty {
 	int n;
 	int i;
 	bool czyf;
-	char *filename;
+	char *name;
 	int filename_len;
 	bool czydir;
 	char *dir;

@@ -28,9 +28,9 @@ void getarg(int argc, char **argv, arg *argload)
 				break;
 			case 'f':
 				argload->czyf=1;
-				argload->filename=malloc(strlen(optarg)*sizeof(char));
-				argload->filename=optarg;
-				argload->filename_len=strlen(argload->filename);
+				argload->name=malloc(strlen(optarg)*sizeof(char));
+				argload->name=optarg;
+				argload->filename_len=strlen(argload->name);
 				break;
 			case 'd':
 				argload->czydir=1;
