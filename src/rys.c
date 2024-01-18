@@ -30,12 +30,15 @@ void wypisz(plansza **array, mrowisko *mrowka, arg *arglist, int iteracja) {
 				fprintf(file, "┌");
 			else if (i == 1 && j == 2*n+1)
 				fprintf (file, "┐");
-			else if (i == 2*m+2 && j == 1)
+			else if (i == 2*m+1 && j == 1)
 				fprintf(file, "└");
-			else if (i == 2*m+2 && j == 2*n+2)
+			else if (i == 2*m+1 && j == 2*n+1)
 				fprintf(file, "┘");
 			else if ( i % 2 == 1)			//jak jesteśmy w nieparzystym wierszu
-					fprintf(file, "─");			//jak jesteśmy w parzystym wierszu
+					if (j % 2 == 1 && i != 1 && i != 2*m+1)
+						fprintf(file,"│");
+					else
+						fprintf(file, "─");			//jak jesteśmy w parzystym wierszu
 			else if (j % 2 == 1)			//jak jesteśmy w nieparzystej kolumnie
 				fprintf(file, "│");
 			else if (array[x][y].state == 1)
