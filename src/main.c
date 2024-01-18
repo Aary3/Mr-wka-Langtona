@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 	{
 		plansza **board = malloc(arglist->m * sizeof(plansza *));
 		for (int i = 0; i < arglist->m; i++)
-			board[i] = malloc(arglist->n * sizeof(plansza);	
+			board[i] = malloc(arglist->n * sizeof(plansza));	
 		mrowisko *mrowka = malloc(sizeof *mrowka);
 		if(arglist->czydir == 0) 
 			mrowka->kierunek = 1;
@@ -33,24 +33,32 @@ int main(int argc, char **argv)
 		}
 		mrowka->x = arglist->n / 2;
 		mrowka->y = arglist->m / 2; //pozycja startowa na srodku ~
+		
+		if (arglist->rand == 1)				//wypełnianie losowo przeszkodami
+			board = przeszkody(board, arglist);
+
+		board = przejscie_mrowki(arglist->i, mrowka, board, arglist);
+
+		for (int i = 0; i < arglist->m; i++)
+			free(board[i]);
+		free(board);
+		free(mrowka);
 	} else //tu napisac wczytanie
 	{
-		plansza **board;
 		mrowisko *mrowka=malloc(sizeof(mrowisko));
-		wczytywanie(board, mrowka, arglist);
+		plansza **board = wczytaj(mrowka, arglist);
+
+		board = przejscie_mrowki(arglist->i, mrowka, board, arglist);
+
+		for (int i = 0; i < arglist->m; i++)
+			free(board[i]);
+		free(board);
+		free(mrowka);
 	}
 
-	if (arglist->rand == 1)				//wypełnianie losowo przeszkodami
-		board = przeszkody(board, arglist);
-
-	board = przejscie_mrowki(arglist->i, mrowka, board);
 
 	//zwalnianie pamięci
-	for (int i = 0; i < arglist->m; i++)
-		free(board[i]);
-	free(board);
 	free(arglist);
-	free(file_out);
-	free(mrowka);
+
 	return 0;
 }

@@ -6,18 +6,19 @@ void wypisz(plansza **array, mrowisko *mrowka, arg *arglist, int iteracja) {
 	int n=arglist->n;
 	int ilecyfr=0;
 	int kopia=iteracja;
+	FILE *file;
 	while(kopia>0)
 	{
 		ilecyfr++;
 		kopia/=10;
 	}
+	char *file_out=malloc((ilecyfr+strlen(arglist->filename)+14)*sizeof(char));
 	if(arglist->czyf == 0)
-		FILE *file=stdout;
+		file=stdout;
         else
 	{
-		char *file_out=malloc((ilecyfr+strlen(arglist->filename)+14)*sizeof(char));
                 sprintf(file_out, "%s_%diteracji.txt", arglist->filename, arglist->i);
-		FILE *file=fopen(file_out, "w");
+		file=fopen(file_out, "w");
 	}
 	int x = 0;
 	int y = 0;
@@ -78,11 +79,13 @@ void wypisz(plansza **array, mrowisko *mrowka, arg *arglist, int iteracja) {
 		}
 	fprintf(file, "\n");	
 	}
+
+	free(file_out);
 }
 
-void wczytaj(plansza **array, mrowisko *mrowka, arg *arglist)
+plansza **wczytaj(mrowisko *mrowka, arg *arglist)
 {
-	if(load==1){
+	if(arglist->load==1){
 		FILE *fload;
 		wchar_t buf[1000];
 		int counter=0; //liczy linijki pliku
@@ -98,62 +101,63 @@ void wczytaj(plansza **array, mrowisko *mrowka, arg *arglist)
 				m++;
 				if(counter==1)
 				{
-					n=(strlen(buf))/2-1;
+					n=(wcslen(buf))/2-1;
 				}
 			}
 	       		counter++;
 		}
-		**board = malloc(m * sizeof(plansza *));
+		plansza **board = malloc(m * sizeof(plansza *));
                 for (int i = 0; i < m; i++)
-                        board[i] = malloc(n * sizeof(plansza);
+                        board[i] = malloc(n * sizeof(plansza));
 		rewind(fload);
 		counter=0;
-                while(fgetws(buf,1000,fload)!=NULL)//w koncu wypelniamy tablice
-		{
+                while(fgetws(buf,1000,fload)!=NULL)
+		{					//w koncu wypelniamy tablice
 			if(counter%2!=0)
-                               	for(int i=0;i<strlen(buf),i++)
+                               	for(int i=0;i<wcslen(buf);i++)
 					if((i-1)%2==0)
-						if(buf[i]==" ") //biale
-							board[(counter-1)/2][(i-1)/2]=0;
-						else if(buf[i]=="█") //czarne
-							board[(counter-1)/2][(i-1)/2]=1;
+						if(buf[i]==L' ') //biale
+							board[(counter-1)/2][(i-1)/2].state=0;
+						else if(buf[i]==L'█') //czarne
+							board[(counter-1)/2][(i-1)/2].state=1;
 						else //mrowka
 						{
 							mrowka->x=(counter-1)/2;
 							mrowka->y=(i-1)/2;
+							
 							switch(buf[i])
 							{
-								case "◀":
+								case L'◀':
 									mrowka->kierunek=0;
-									board[(counter-1)/2][(i-1)/2]=1;
-                                                        		break;
-								case "▲":
-									mrowka->kierunek=1;
-									board[(counter-1)/2][(i-1)/2]=1;
+									board[(counter-1)/2][(i-1)/2].state=1;
 									break;
-								case "▶":
+								case L'▲':
+									mrowka->kierunek=1;
+									board[(counter-1)/2][(i-1)/2].state=1;
+									break;
+								case L'▶':
 									mrowka->kierunek=2;
-									board[(counter-1)/2][(i-1)/2]=1;
+									board[(counter-1)/2][(i-1)/2].state=1;
                                                         		break;
-								case "▼":
+								case L'▼':
 									mrowka->kierunek=3;
-									board[(counter-1)/2][(i-1)/2]=1;
+									board[(counter-1)/2][(i-1)/2].state=1;
                                                         		break;
-								case "◁":
+								case L'◁':
 									mrowka->kierunek=0;
-									board[(counter-1)/2][(i-1)/2]=0;
+									board[(counter-1)/2][(i-1)/2].state=0;
                                                         		break;
-								case "△":
+								case L'△':
 									mrowka->kierunek=1;
-									board[(counter-1)/2][(i-1)/2]=0;
+									board[(counter-1)/2][(i-1)/2].state=0;
 									break;
-								case "▷":
+								case L'▷':
 									mrowka->kierunek=2;
-									board[(counter-1)/2][(i-1)/2]=0;
+									board[(counter-1)/2][(i-1)/2].state=0;
 									break;
-                                                        	case "▽":
+								case L'▽':
 									mrowka->kierunek=3;
-									board[(counter-1)/2][(i-1)/2]=0;
+									board[(counter-1)/2][(i-1)/2].state=0;
 									break;
 								default:
 									printf("cos nie dziala we wczytywaniu \n");
@@ -161,5 +165,9 @@ void wczytaj(plansza **array, mrowisko *mrowka, arg *arglist)
 						}
                         counter++;
                 }
+		arglist->m = m;
+		arglist->n = n;
+		return board;
 	}
+	return NULL;
 }

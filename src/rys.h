@@ -7,6 +7,6 @@
 
 void wypisz ( plansza **array, mrowisko *mrowka, arg *arglist, int iteracja );
 
-void wczytaj ( plansza **array, mrowisko *mrowka, arg *arglist);
+plansza **wczytaj (mrowisko *mrowka, arg *arglist);
 
 #endif
