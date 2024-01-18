@@ -26,4 +26,6 @@ moze byc dowolna). Jesli jakis argument nie zostanie podany program sam przyjmuj
 	2.5 (-d) [poczatkowy kierunek mrowki] (startowa lokacja jest przyjmowana za srodek)
 	2.6 (-l) [wczytanie mapy o podanej nazwie] 
 	2.7 (-r) [generowanie mapy, gdzie wartosc oznacza procent zapelnienia czarnymi polami]
-
+3. WAZNE!!! W wypadku podania bezsensownych wartosci pokroju wiecej niz 100 procent albo brak
+wartosci do jakiejs flagi program wyswietli blad, ale sprobuje i tak sie uruchomic, choc nie
+powinno miec katastrofalnych skutkow skoro przypisujemy i tak wartosci na wypadek braku podania
