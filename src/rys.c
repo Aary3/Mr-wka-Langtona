@@ -12,13 +12,17 @@ void wypisz(plansza **array, mrowisko *mrowka, arg *arglist, int iteracja) {
 		ilecyfr++;
 		kopia/=10;
 	}
-	char *file_out =arglist->czyf==0?malloc((ilecyfr+arglist->filename_len+14)*sizeof(char)):NULL;
+	char *file_out = NULL;
 	if(arglist->czyf == 0)
 		file=stdout;
         else
 	{
+		file_out=malloc((ilecyfr+arglist->filename_len+14)*sizeof(char));
                 sprintf(file_out, "%s_%diteracji.txt", arglist->filename, arglist->i);
-		file=fopen(file_out, "w");
+		if (iteracja == 0)
+			file=fopen(file_out, "w");
+		else
+			file=fopen(file_out, "a");
 	}
 	int x = 0;
 	int y = 0;
@@ -80,7 +84,7 @@ void wypisz(plansza **array, mrowisko *mrowka, arg *arglist, int iteracja) {
                                         fprintf(file, " ");
 			}
 		}
-	fprintf(file, "\n");	
+	fprintf(file, "\n");
 	}
 
 	free(file_out);
