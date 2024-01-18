@@ -18,23 +18,23 @@ int mrowka_operacja(mrowisko *mrowka, plansza **array, arg *arglist){
        	{
 		case 0:
 			mrowka->y-=1;
-			if(mrowka->x<0)
-				mrowka->x=arglist->m-1;
+			if(mrowka->y<0)
+				mrowka->y=arglist->n-1;
 			break;
 		case 1:
 			mrowka->x-=1;
-			if(mrowka->y==arglist->n)
-				mrowka->y=0;
+			if(mrowka->x<0)
+				mrowka->x=arglist->m-1;
 			break;
 		case 2:
 			mrowka->y+=1;
-			if(mrowka->x==arglist->m)
-				mrowka->x=0;
+			if(mrowka->y==arglist->n)
+				mrowka->y=0;
 			break;
 		case 3:
 			mrowka->x+=1;
-			if(mrowka->y<0)
-				mrowka->y=arglist->n-1;
+			if(mrowka->x==arglist->m-1)
+				mrowka->x=0;
 			break;
 	}
 }
