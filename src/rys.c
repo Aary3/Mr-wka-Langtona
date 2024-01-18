@@ -17,8 +17,8 @@ void wypisz(plansza **array, mrowisko *mrowka, arg *arglist, int iteracja) {
 		file=stdout;
         else
 	{
-		file_out=malloc((ilecyfr+arglist->filename_len+14)*sizeof(char));
-                sprintf(file_out, "%s_%diteracji.txt", arglist->name, iteracja+1);
+		file_out=malloc((ilecyfr+arglist->filename_len+10)*sizeof(char));
+                sprintf(file_out, "%s_%diteracji", arglist->name, iteracja+1);
 		file = fopen(file_out, "w");
 	}
 	int x = 0;
