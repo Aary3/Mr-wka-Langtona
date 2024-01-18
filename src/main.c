@@ -2,6 +2,7 @@
 #include "getarg.h"
 #include "operacja.h"
 #include "rys.h"
+#include "przeszkody.h"
 #include <stdlib.h>
 
 int main(int argc, char **argv) {
@@ -36,6 +37,10 @@ int main(int argc, char **argv) {
 	}
 	mrowka->x = arglist->n / 2;
 	mrowka->y = arglist->m / 2;
+
+	if (arglist->rand == 1)				//wypełnianie losowo przeszkodami
+		board = przeszkody(board, arglist);
+
 	board = przejscie_mrowki(arglist->i, mrowka, board);
 
 	wypisz(f, board, arglist->m, arglist->n);
