@@ -26,6 +26,7 @@ void wypisz(plansza **array, mrowisko *mrowka, arg *arglist, int iteracja) {
 	}
 	int x = 0;
 	int y = 0;
+	fprintf(file, "Iteracja nr. %d:\n", iteracja+1);
 	for (int i = 1; i <= 2*m+1; i++) {		//wiersze
 		y = (i-1)/2;
 		for (int j = 1; j <= 2*n+1; j++) {		//kolumny
