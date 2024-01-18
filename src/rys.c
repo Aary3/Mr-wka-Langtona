@@ -27,9 +27,9 @@ void wypisz(plansza **array, mrowisko *mrowka, arg *arglist, int iteracja) {
 	int x = 0;
 	int y = 0;
 	for (int i = 1; i <= 2*m+1; i++) {		//wiersze
-		x = (i-1)/2;
+		y = (i-1)/2;
 		for (int j = 1; j <= 2*n+1; j++) {		//kolumny
-			y = (j-1)/2;
+			x = (j-1)/2;
 			if (i == 1 && j == 1)			//najpierw warunki dla rogów
 				fprintf(file, "┌");
 			else if (i == 1 && j == 2*n+1)
@@ -47,7 +47,7 @@ void wypisz(plansza **array, mrowisko *mrowka, arg *arglist, int iteracja) {
 				fprintf(file, "│");
 			else if (array[x][y].state == 1)
 			{
-				if(mrowka->x==x && mrowka->y==y)
+				if(mrowka->y==x && mrowka->x==y)
 					switch(mrowka->kierunek){
 						case 0:
 							fprintf(file, "◀");
@@ -66,7 +66,7 @@ void wypisz(plansza **array, mrowisko *mrowka, arg *arglist, int iteracja) {
 			}
 			else
 			{
-			if(mrowka->x==x && mrowka->y==y)
+			if(mrowka->y==x && mrowka->x==y)
                                         switch(mrowka->kierunek){
                                                 case 0:
                                                         fprintf(file, "◁");
