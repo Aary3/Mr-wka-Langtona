@@ -97,11 +97,12 @@ plansza **wczytaj(mrowisko *mrowka, arg *arglist)
 		int counter=0; //liczy linijki pliku
 		int m=0;
 		int n=0; //liczy wiersze pliku
-		setlocale(LC_CTYPE, "it_IT.UTF-8");
-		if((fload=fopen(arglist->name,"r"))==NULL)
+		setlocale(LC_CTYPE, "en_US.UTF-8");
+		fload=fopen(arglist->loadf, "r");
+		if(fload==NULL)
 			printf("\n blad w otwarciu pliku \n");
 		while(fgetws(buf,1000,fload)!=NULL)
-		{//faktyczne wczytywanie (to powinno czytac linijke albo 1000 znakow(co pierwsze)// na start znajdujemy m i n
+		{				//faktyczne wczytywanie (to powinno czytac linijke albo 1000 znakow(co pierwsze)// na start znajdujemy m i n
 			if(counter%2!=0)
 			{
 				m++;
@@ -120,13 +121,15 @@ plansza **wczytaj(mrowisko *mrowka, arg *arglist)
                 while(fgetws(buf,1000,fload)!=NULL)
 		{					//w koncu wypelniamy tablice
 			if(counter%2!=0)
-                               	for(int i=0;i<wcslen(buf);i++)
+                               	for(int i=0;i<wcslen(buf)-1;i++)
 					if((i-1)%2==0)
 						if(buf[i]==L' ') //biale
 							board[(counter-1)/2][(i-1)/2].state=0;
 						else if(buf[i]==L'█') //czarne
 							board[(counter-1)/2][(i-1)/2].state=1;
-						else //mrowka
+						else if(buf[i]==L'\n')
+							printf("nie powinienem tego czytac \n");
+						else//mrowka
 						{
 							mrowka->x=(counter-1)/2;
 							mrowka->y=(i-1)/2;
